@@ -4,12 +4,12 @@ namespace Buddhika\Helpers;
 
 class Helpers
 {
-    public static function getRandomElement(array $array): mixed
+    public static function randomElement(array $array): mixed
     {
         return $array[array_rand($array)];
     }
 
-    public static function getLanguageScores(array $languageModels, string $text): array
+    public static function languageScores(array $languageModels, string $text): array
     {
         // Lowercase the input text
         $text = strtolower($text);

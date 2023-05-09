@@ -11,7 +11,7 @@ composer require buddhika/helpers
 ### Get a random element
 
 ```php
-$element = Buddhika\Helpers::getRandomElement($array);
+$element = Buddhika\Helpers::randomElement($array);
 ```
 
 ### Detect languages
@@ -25,7 +25,7 @@ $languageModels = [
 
 $text = 'Hello world! How are you doing today?';
 
-$result = Buddhika\Helpers::getLanguageScores($languageModels, $text);
+$result = Buddhika\Helpers::languageScores($languageModels, $text);
 
 print_r($result);
 

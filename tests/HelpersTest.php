@@ -6,15 +6,15 @@ use PHPUnit\Framework\TestCase;
 
 class HelpersTest extends TestCase
 {
-    public function testGetRandomElement(): void
+    public function testRandomElement(): void
     {
         $animals = ['alpaca', 'bear', 'cheetah', 'dolphin', 'elephant'];
-        $randomAnimal = Helpers::getRandomElement($animals);
+        $randomAnimal = Helpers::randomElement($animals);
 
         $this->assertTrue(in_array($randomAnimal, $animals));
     }
 
-    public function testGetLanguageScores()
+    public function testLanguageScores()
     {
         $languageModels = [
             'en' => ['hello', 'world', 'goodbye'],
@@ -25,17 +25,17 @@ class HelpersTest extends TestCase
         // Test with English text
         $text = 'Hello world! How are you doing today?';
         $expectedResult = ['en' => 1.0, 'es' => 0.0, 'fr' => 0.0];
-        $result = Helpers::getLanguageScores($languageModels, $text);
+        $result = Helpers::languageScores($languageModels, $text);
         $this->assertEquals($expectedResult, $result);
 
         // Test with Spanish text
         $text = 'Hola mundo! ¿Cómo estás hoy?';
         $expectedResult = ['en' => 0.0, 'es' => 1.0, 'fr' => 0.0];
-        $result = Helpers::getLanguageScores($languageModels, $text);
+        $result = Helpers::languageScores($languageModels, $text);
         $this->assertEquals($expectedResult, $result);
     }
 
-    public function testGetLanguageScoresError()
+    public function testLanguageScoresError()
     {
         $languageModels = [
             'en' => ['hello', 'world', 'goodbye'],
@@ -46,6 +46,6 @@ class HelpersTest extends TestCase
         // Test with unsupported language
         $text = 'こんにちは';
         $this->expectException(\Exception::class);
-        Helpers::getLanguageScores($languageModels, $text);
+        Helpers::languageScores($languageModels, $text);
     }
 }
