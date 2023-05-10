@@ -6,14 +6,6 @@ use PHPUnit\Framework\TestCase;
 
 class HelpersTest extends TestCase
 {
-    public function testRandomElement(): void
-    {
-        $animals = ['alpaca', 'bear', 'cheetah', 'dolphin', 'elephant'];
-        $randomAnimal = Helpers::randomElement($animals);
-
-        $this->assertTrue(in_array($randomAnimal, $animals));
-    }
-
     public function testLanguageScores()
     {
         $languageModels = [
@@ -47,6 +39,14 @@ class HelpersTest extends TestCase
         $text = 'こんにちは';
         $this->expectException(\Exception::class);
         Helpers::languageScores($languageModels, $text);
+    }
+
+    public function testRandomElement(): void
+    {
+        $animals = ['alpaca', 'bear', 'cheetah', 'dolphin', 'elephant'];
+        $randomAnimal = Helpers::randomElement($animals);
+
+        $this->assertTrue(in_array($randomAnimal, $animals));
     }
 
     public function testSlugifyConvertsStringIntoSlug()

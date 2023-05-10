@@ -4,11 +4,6 @@ namespace Buddhika\Helpers;
 
 class Helpers
 {
-    public static function randomElement(array $array): mixed
-    {
-        return $array[array_rand($array)];
-    }
-
     public static function languageScores(array $languageModels, string $text): array
     {
         // Lowercase the input text
@@ -44,6 +39,11 @@ class Helpers
         arsort($scores);
 
         return $scores;
+    }
+
+    public static function randomElement(array $array): mixed
+    {
+        return $array[array_rand($array)];
     }
 
     public static function slugify(string $text): string
