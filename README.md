@@ -36,3 +36,14 @@ Array
     [fr] => 0.0
 )
 ```
+
+### Slugify strings
+
+```php
+$text = "Commit Often, Perfect Later, Publish Once: Git Best Practices";
+$result = Buddhika\Helpers::slugify($text);
+
+print_r($result);
+
+// commit-often-perfect-later-publish-once-git-best-practices
+```

@@ -48,4 +48,39 @@ class HelpersTest extends TestCase
         $this->expectException(\Exception::class);
         Helpers::languageScores($languageModels, $text);
     }
+
+    public function testSlugifyConvertsStringIntoSlug()
+    {
+        $text = "This is a sample string! #123";
+        $expected = "this-is-a-sample-string-123";
+        $this->assertEquals($expected, Helpers::slugify($text));
+    }
+
+    public function testSlugifyWithMultipleSpaces()
+    {
+        $text = " This    is   a  sample  string!   ";
+        $expected = "this-is-a-sample-string";
+        $this->assertEquals($expected, Helpers::slugify($text));
+    }
+
+    public function testSlugifyWithSymbols()
+    {
+        $text = "This is a sample string! @#$%^&*()";
+        $expected = "this-is-a-sample-string";
+        $this->assertEquals($expected, Helpers::slugify($text));
+    }
+
+    public function testSlugifyWithDiacritics()
+    {
+        $text = "Jalapeño is a type of chili pepper";
+        $expected = "jalapeno-is-a-type-of-chili-pepper";
+        $this->assertEquals($expected, Helpers::slugify($text));
+    }
+
+    public function testSlugifyWithTrailingHyphen()
+    {
+        $text = "This is a sample string-";
+        $expected = "this-is-a-sample-string";
+        $this->assertEquals($expected, Helpers::slugify($text));
+    }
 }
