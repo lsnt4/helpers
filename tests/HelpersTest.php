@@ -13,6 +13,47 @@ class HelpersTest extends TestCase
         $this->assertEquals([1, 2, 3, 4, 5, 6], $flattenedArray);
     }
 
+    public function testArraySortByKeySortsMultidimensionalArrayByKey()
+    {
+        $array = [
+            ['name' => 'John', 'age' => 30],
+            ['name' => 'Alice', 'age' => 25],
+            ['name' => 'Bob', 'age' => 35],
+        ];
+
+        $sortedArray = [
+            ['name' => 'Alice', 'age' => 25],
+            ['name' => 'John', 'age' => 30],
+            ['name' => 'Bob', 'age' => 35],
+        ];
+
+        $result = Helpers::arraySortByKey($array, 'age');
+
+        $this->assertEquals($sortedArray, $result);
+    }
+
+    public function testArraySortByKeyReturnsOriginalArrayWhenKeyNotExists()
+    {
+        $array = [
+            ['name' => 'John', 'age' => 30],
+            ['name' => 'Alice', 'age' => 25],
+            ['name' => 'Bob', 'age' => 35],
+        ];
+
+        $result = Helpers::arraySortByKey($array, 'nonexistent_key');
+
+        $this->assertEquals($array, $result);
+    }
+
+    public function testArraySortByKeyReturnsEmptyArrayWhenGivenEmptyArray()
+    {
+        $array = [];
+
+        $result = Helpers::arraySortByKey($array, 'name');
+
+        $this->assertEquals($array, $result);
+    }
+
     public function testLanguageScores()
     {
         $languageModels = [

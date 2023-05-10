@@ -17,6 +17,17 @@ class Helpers
         return $result;
     }
 
+    public static function arraySortByKey(array $array, string $key)
+    {
+        usort($array, function ($a, $b) use ($key) {
+            if (!isset($a[$key]) || !isset($b[$key])) {
+                return 0;
+            }
+            return $a[$key] <=> $b[$key];
+        });
+        return $array;
+    }
+
     public static function languageScores(array $languageModels, string $text): array
     {
         // Lowercase the input text

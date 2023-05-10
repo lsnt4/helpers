@@ -2,7 +2,8 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Flatten arrays](#flatten-arrays)
+  - [Flatten array](#flatten-array)
+  - [Sort array by key (values)](#sort-array-by-key-values)
   - [Detect languages](#detect-languages)
   - [Get a random element](#get-a-random-element)
   - [Slugify strings](#slugify-strings)
@@ -19,7 +20,7 @@ composer require buddhika/helpers
 namespace Buddhika\Helpers;
 ```
 
-### Flatten arrays
+### Flatten array
 
 ```php
 $array = array(['a'], ['b', 'c'], ['d', 'e', 'f']);
@@ -36,6 +37,43 @@ Array
     [3] => d
     [4] => e
     [5] => f
+)
+*/
+```
+
+### Sort array by key (values)
+
+```php
+$array = array(
+    array("name" => "John", "age" => 23),
+    array("name" => "Jane", "age" => 21),
+    array("name" => "Mike", "age" => 25)
+);
+$sortedArray = Helpers::arraySortByKey($array, "age");
+
+print_r($sortedArray);
+
+/*
+Array
+(
+    [0] => Array
+        (
+            [name] => Jane
+            [age] => 21
+        )
+
+    [1] => Array
+        (
+            [name] => John
+            [age] => 23
+        )
+
+    [2] => Array
+        (
+            [name] => Mike
+            [age] => 25
+        )
+
 )
 */
 ```
