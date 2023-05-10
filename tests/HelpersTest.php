@@ -6,6 +6,13 @@ use PHPUnit\Framework\TestCase;
 
 class HelpersTest extends TestCase
 {
+    public function testArrayFlattenFlattensMultidimensionalArray()
+    {
+        $array = array([1, 2], [3, 4], [5, 6]);
+        $flattenedArray = Helpers::arrayFlatten($array);
+        $this->assertEquals([1, 2, 3, 4, 5, 6], $flattenedArray);
+    }
+
     public function testLanguageScores()
     {
         $languageModels = [

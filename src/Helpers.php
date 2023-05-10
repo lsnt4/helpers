@@ -4,6 +4,19 @@ namespace Buddhika\Helpers;
 
 class Helpers
 {
+    public static function arrayFlatten(array $array): array
+    {
+        $result = array();
+        foreach ($array as $value) {
+            if (is_array($value)) {
+                $result = array_merge($result, self::arrayFlatten($value));
+            } else {
+                $result[] = $value;
+            }
+        }
+        return $result;
+    }
+
     public static function languageScores(array $languageModels, string $text): array
     {
         // Lowercase the input text

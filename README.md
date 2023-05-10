@@ -2,6 +2,7 @@
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Flatten arrays](#flatten-arrays)
   - [Detect languages](#detect-languages)
   - [Get a random element](#get-a-random-element)
   - [Slugify strings](#slugify-strings)
@@ -16,6 +17,27 @@ composer require buddhika/helpers
 
 ```php
 namespace Buddhika\Helpers;
+```
+
+### Flatten arrays
+
+```php
+$array = array(['a'], ['b', 'c'], ['d', 'e', 'f']);
+$flattenedArray = Helpers::arrayFlatten($array);
+
+print_r($flattenedArray);
+
+/*
+Array
+(
+    [0] => a
+    [1] => b
+    [2] => c
+    [3] => d
+    [4] => e
+    [5] => f
+)
+*/
 ```
 
 ### Detect languages
