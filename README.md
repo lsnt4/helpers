@@ -1,17 +1,21 @@
 # Helpers
 
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Detect languages](#detect-languages)
+  - [Get a random element](#get-a-random-element)
+  - [Slugify strings](#slugify-strings)
+
 ## Installation
 
 ```
 composer require buddhika/helpers
 ```
 
-## Usage 
-
-### Get a random element
+## Usage
 
 ```php
-$element = Buddhika\Helpers::randomElement($array);
+namespace Buddhika\Helpers;
 ```
 
 ### Detect languages
@@ -22,26 +26,37 @@ $languageModels = [
     'es' => ['hola', 'mundo', 'adios'],
     'fr' => ['bonjour', 'monde', 'au revoir'],
 ];
-
 $text = 'Hello world! How are you doing today?';
-
-$result = Buddhika\Helpers::languageScores($languageModels, $text);
+$result = Helpers::languageScores($languageModels, $text);
 
 print_r($result);
 
+/*
 Array
 (
     [en] => 1.0
     [es] => 0.0
     [fr] => 0.0
 )
+*/
+```
+
+### Get a random element
+
+```php
+$array = ['apple', 'banana', 'cherry'];
+$element = Helpers::randomElement($array);
+
+print_r($element);
+
+// banana
 ```
 
 ### Slugify strings
 
 ```php
 $text = "Commit Often, Perfect Later, Publish Once: Git Best Practices";
-$result = Buddhika\Helpers::slugify($text);
+$result = Helpers::slugify($text);
 
 print_r($result);
 
